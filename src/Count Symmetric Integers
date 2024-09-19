@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Solution {
+public:
+    int countSymmetricIntegers(int low, int high) {
+        int counter = 0;
+
+        for (int i = low; i <= high; i++) {
+            string numInStr = to_string(i);
+            int strLength = numInStr.length();
+            int firstHalfSum = 0, secondHalfSum = 0;
+
+            if (strLength % 2 == 0) {
+                for (int j = 0; j < strLength / 2; j++) {
+                    char digitChar = numInStr[j];
+                    firstHalfSum += digitChar - '0';
+                }
+
+                for (int k = strLength / 2; k < strLength; k++) {
+                    char digitChar = numInStr[k];
+                    secondHalfSum += digitChar - '0';
+                }
+
+                if (firstHalfSum == secondHalfSum) {
+                    counter++;
+                    cout << "Symmetric integer: " << i << endl;
+                }
+            }
+        }
+        return counter;
+    }
+};
