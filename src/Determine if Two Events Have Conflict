@@ -1,0 +1,20 @@
+class Solution {
+    public boolean haveConflict(String[] event1, String[] event2) {
+        int h1S = Integer.parseInt(event1[0].substring(0, 2));
+        int m1S = Integer.parseInt(event1[0].substring(3, 5));
+        int h2S = Integer.parseInt(event2[0].substring(0, 2));
+        int m2S = Integer.parseInt(event2[0].substring(3, 5));
+
+        int h1F = Integer.parseInt(event1[1].substring(0, 2));
+        int m1F = Integer.parseInt(event1[1].substring(3, 5));
+        int h2F = Integer.parseInt(event2[1].substring(0, 2));
+        int m2F = Integer.parseInt(event2[1].substring(3, 5));
+
+        int t1S = h1S * 60 + m1S;
+        int t2S = h2S * 60 + m2S;
+
+        int t1F = h1F * 60 + m1F;
+        int t2F = h2F * 60 + m2F;
+        return t1S <= t2F && t1F >= t2S;
+    }
+}
